@@ -5,10 +5,67 @@ Accept: application/json
 
 POST http://localhost:3000/users
 Accept: application/json
+Content-Type: application/json
+
+{
+"name": "Анна С.",
+"about": "Врач",
+"avatar": "https://i.pinimg.com/originals/73/0c/e2/730ce22f0ba673bafc285998337a60c8.jpg"
+}
+###
+
+GET http://localhost:3000/users/63846085f095e511f4f1bc2c
+Accept: application/json
 
 ###
 
-GET http://localhost:3000/users/12345
+PATCH http://localhost:3000/users/me
+Accept: application/json
+Content-Type: application/json
+
+{
+  "name": "Aleksandr S.",
+  "about": "Software Engineer"
+}
+
+###
+
+PATCH http://localhost:3000/users/me/avatar
+Accept: application/json
+Content-Type: application/json
+
+{
+  "avatar": "https://damion.club/uploads/posts/2022-03/1647021971_1-damion-club-p-retrofuturizm-krasivie-foto-1.jpg"
+}
+
+###
+
+GET http://localhost:3000/cards
+Accept: application/json
+
+###
+
+POST http://localhost:3000/cards
+Accept: application/json
+Content-Type: application/json
+
+{
+  "name": "Дом",
+  "link": "https://damion.club/uploads/posts/2022-03/1647021971_1-damion-club-p-retrofuturizm-krasivie-foto-1.jpg"
+}
+###
+
+DELETE http://localhost:3000/cards/63846d4545d375ba7449e11с
+Accept: application/json
+
+###
+
+PUT http://localhost:3000/cards/63846cbe5043270671453fc3/likes
+Accept: application/json
+
+###
+
+DELETE http://localhost:3000/cards/63846cbe5043270671453fc3/likes
 Accept: application/json
 
 ###

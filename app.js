@@ -13,12 +13,12 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(bodyParser.json());
 
-/*app.use((req, res, next) => {
+app.use((req, res, next) => {
   req.user = {
-    _id: '638369d5b608a6011e85b877'
+    _id: '6384601d3321b92c4ebc820e'
   };
   next();
-});*/
+});
 
 app.use('/users', usersRouter);
 
