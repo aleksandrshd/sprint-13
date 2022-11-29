@@ -18,8 +18,12 @@ const createUser = async (req, res) => {
 
   } catch (err) {
     console.error(err);
-    const errors = Object.values(err.errors).map(err => err.message);
-    return res.status(500).json({message: errors.join(', ')});
+    if (err.name = 'ValidationError') {
+      const errors = Object.values(err.errors).map(err => err.message);
+      return res.status(400).json({message: 'Переданы некорректные данные при создании пользователя. ' + errors.join(', ')});
+    } else {
+      return res.status(500).json({message: 'Произошла ошибка'});
+    }
   }
 }
 
@@ -45,7 +49,10 @@ const updateUserProfile = async (req, res) => {
 
   try {
     const id = req.user._id;
-    const user = await User.findByIdAndUpdate(id, {name: req.body.name, about: req.body.about}, {new: true});
+    const user = await User.findByIdAndUpdate(id, {name: req.body.name, about: req.body.about}, {
+      new: true,
+      runValidators: true
+    });
 
     if (!user) {
       return res.status(404).json({message: 'Пользователь не найден'});
@@ -55,7 +62,12 @@ const updateUserProfile = async (req, res) => {
 
   } catch (err) {
     console.error(err);
-    return res.status(500).json({message: 'Произошла ошибка'});
+    if (err.name = 'ValidationError') {
+      const errors = Object.values(err.errors).map(err => err.message);
+      return res.status(400).json({message: 'Переданы некорректные данные при обновлении профиля. ' + errors.join(', ')});
+    } else {
+      return res.status(500).json({message: 'Произошла ошибка'});
+    }
   }
 }
 
@@ -73,8 +85,13 @@ const updateUserAvatar = async (req, res) => {
 
   } catch (err) {
     console.error(err);
-    return res.status(500).json({message: 'Произошла ошибка'});
+    if (err.name = 'ValidationError') {
+      const errors = Object.values(err.errors).map(err => err.message);
+      return res.status(400).json({message: 'Переданы некорректные данные при обновлении аватара. ' + errors.join(', ')});
+    } else {
+      return res.status(500).json({message: 'Произошла ошибка'});
+    }
   }
 }
 
-module.exports = { getUsers, createUser, getUser, updateUserProfile, updateUserAvatar };
+module.exports = {getUsers, createUser, getUser, updateUserProfile, updateUserAvatar};

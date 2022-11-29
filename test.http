@@ -14,7 +14,7 @@ Content-Type: application/json
 }
 ###
 
-GET http://localhost:3000/users/63846085f095e511f4f1bc2c
+GET http://localhost:3000/users/6385a58bbeb7d0abaab80f08
 Accept: application/json
 
 ###
@@ -24,7 +24,7 @@ Accept: application/json
 Content-Type: application/json
 
 {
-  "name": "Aleksandr S.",
+  "name": "Aleksandr",
   "about": "Software Engineer"
 }
 
@@ -35,7 +35,7 @@ Accept: application/json
 Content-Type: application/json
 
 {
-  "avatar": "https://damion.club/uploads/posts/2022-03/1647021971_1-damion-club-p-retrofuturizm-krasivie-foto-1.jpg"
+  "avatar": ""
 }
 
 ###
@@ -55,17 +55,17 @@ Content-Type: application/json
 }
 ###
 
-DELETE http://localhost:3000/cards/63846d4545d375ba7449e11с
+DELETE http://localhost:3000/cards/6485b434603cdfc4632e9022
 Accept: application/json
 
 ###
 
-PUT http://localhost:3000/cards/63846cbe5043270671453fc3/likes
+PUT http://localhost:3000/cards/6385b434603cdfc4632e9022/likes
 Accept: application/json
 
 ###
 
-DELETE http://localhost:3000/cards/63846cbe5043270671453fc3/likes
+DELETE http://localhost:3000/cards/6375b434603cdfc4632e9022/likes
 Accept: application/json
 
 ###
